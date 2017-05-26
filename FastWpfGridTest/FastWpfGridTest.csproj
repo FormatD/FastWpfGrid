@@ -53,6 +53,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataTableExtension.cs" />
+    <Compile Include="DictionaryExtends.cs" />
+    <Compile Include="GridModel4.cs" />
     <Compile Include="GridModel3.cs" />
     <Compile Include="TextRenderPanel.cs" />
     <Page Include="MainWindow.xaml">

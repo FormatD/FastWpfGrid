@@ -26,6 +26,7 @@ namespace FastWpfGridTest
         private GridModel1 _model1;
         private GridModel2 _model2;
         private GridModel3 _model3;
+        private GridModel4 _model4;
 
         public MainWindow()
         {
@@ -33,11 +34,22 @@ namespace FastWpfGridTest
             grid1.Model = _model1 = new GridModel1();
             grid2.Model = _model2 = new GridModel2();
             grid3.Model = _model3 = new GridModel3();
+            grid4.Model = _model4 = new GridModel4();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            grid1.ContextMenuOpening += Grid1_ContextMenuOpening;
+        }
+
+        private void Grid1_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            
         }
 
         private void tabChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (tab.SelectedIndex == 2) Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, (Action) SetBitmap);
+            if (tab.SelectedIndex == 3) Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, (Action) SetBitmap);
         }
 
         private void SetBitmap()
@@ -159,7 +171,7 @@ namespace FastWpfGridTest
 
             encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bmp));
-            using (var fs = System.IO.File.OpenWrite("c:/test/file1.png"))
+            using (var fs = System.IO.File.OpenWrite("file1.png"))
             {
                 encoder.Save(fs);
             }

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowState="Maximized"
         xmlns:FastWpfGrid="clr-namespace:FastWpfGrid;assembly=FastWpfGrid"
-        xmlns:FastWpfGridTest="clr-namespace:FastWpfGridTest" Title="FastWpfGrid Test Application" Height="350" Width="525" >
+        xmlns:FastWpfGridTest="clr-namespace:FastWpfGridTest" Title="FastWpfGrid Test Application" Height="350" Width="525" 
+        Loaded="Window_Loaded">
     <Grid>
         <TabControl SelectionChanged="tabChanged" x:Name="tab">
             <TabItem Header="Grid 1 - scrolling">
@@ -60,6 +61,21 @@
                     <FastWpfGrid:FastGridControl x:Name="grid3" Grid.Row="1" 
                                                  IsTransposed="{Binding IsChecked, ElementName=chbIsTransposed3}"
                                                  AllowFlexibleRows="{Binding IsChecked, ElementName=chbFlexibleRows}"
+                                                 />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Grid 4 - datatable">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <!--<CheckBox Content="Is transposed" x:Name="chbIsTransposed3" />-->
+                        <CheckBox Content="Flexible rows" x:Name="chbFlexibleRows1" />
+                    </StackPanel>
+                    <FastWpfGrid:FastGridControl x:Name="grid4" Grid.Row="1" 
+                                                 AllowFlexibleRows="{Binding IsChecked, ElementName=chbFlexibleRows1}"
                                                  />
                 </Grid>
             </TabItem>

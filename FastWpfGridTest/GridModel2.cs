@@ -44,6 +44,11 @@ namespace FastWpfGridTest
                     TextData = String.Format("Column {0}", column),
                 });
 
+            var btn = res.AddImageBlock("/Images/foreign_keysmall.png");
+            btn.MouseHoverBehaviour = MouseHoverBehaviours.HideWhenMouseOut;
+            btn.CommandParameter = "TEST";
+
+
             return res;
         }
 
@@ -70,9 +75,15 @@ namespace FastWpfGridTest
             impl.AddTextBlock(GetCellText(row, column));
             var btn = impl.AddImageBlock("/Images/foreign_keysmall.png");
             btn.MouseHoverBehaviour = MouseHoverBehaviours.HideWhenMouseOut;
+
             btn.CommandParameter = "TEST";
-            impl.RightAlignBlockCount = 1;
+            impl.RightAlignBlockCount = 0;
             return impl;
+        }
+
+        public override void HandleCommand(IFastGridView view, FastGridCellAddress address, object commandParameter, ref bool handled)
+        {
+            base.HandleCommand(view, address, commandParameter, ref handled);
         }
 
         public override string GetCellText(int row, int column)
